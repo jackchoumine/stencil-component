@@ -14,7 +14,7 @@ export class AppHome {
           <a href="https://stenciljs.com">stenciljs.com</a> to get started.
         </p>
 
-        <stencil-route-link url="/profile/stencil">
+        <stencil-route-link url="/dashboard/stencil">
           <button>Profile page</button>
         </stencil-route-link>
       </div>

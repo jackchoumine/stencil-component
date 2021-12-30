@@ -7,7 +7,11 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults } from "@stencil/router";
 export namespace Components {
+    interface AppCustomCube {
+    }
     interface AppHome {
+    }
+    interface AppNav {
     }
     interface AppProfile {
         "match": MatchResults;
@@ -16,11 +20,23 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLAppCustomCubeElement extends Components.AppCustomCube, HTMLStencilElement {
+    }
+    var HTMLAppCustomCubeElement: {
+        prototype: HTMLAppCustomCubeElement;
+        new (): HTMLAppCustomCubeElement;
+    };
     interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
     }
     var HTMLAppHomeElement: {
         prototype: HTMLAppHomeElement;
         new (): HTMLAppHomeElement;
+    };
+    interface HTMLAppNavElement extends Components.AppNav, HTMLStencilElement {
+    }
+    var HTMLAppNavElement: {
+        prototype: HTMLAppNavElement;
+        new (): HTMLAppNavElement;
     };
     interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {
     }
@@ -35,13 +51,19 @@ declare global {
         new (): HTMLAppRootElement;
     };
     interface HTMLElementTagNameMap {
+        "app-custom-cube": HTMLAppCustomCubeElement;
         "app-home": HTMLAppHomeElement;
+        "app-nav": HTMLAppNavElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
     }
 }
 declare namespace LocalJSX {
+    interface AppCustomCube {
+    }
     interface AppHome {
+    }
+    interface AppNav {
     }
     interface AppProfile {
         "match"?: MatchResults;
@@ -49,7 +71,9 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface IntrinsicElements {
+        "app-custom-cube": AppCustomCube;
         "app-home": AppHome;
+        "app-nav": AppNav;
         "app-profile": AppProfile;
         "app-root": AppRoot;
     }
@@ -58,7 +82,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "app-custom-cube": LocalJSX.AppCustomCube & JSXBase.HTMLAttributes<HTMLAppCustomCubeElement>;
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
+            "app-nav": LocalJSX.AppNav & JSXBase.HTMLAttributes<HTMLAppNavElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
         }
