@@ -2,14 +2,14 @@
  * @Description : 导航栏
  * @Date        : 2021-12-30 21:48:01 +0800
  * @Author      : JackChou
- * @LastEditTime: 2021-12-30 22:00:46 +0800
+ * @LastEditTime: 2021-12-30 22:03:57 +0800
  * @LastEditors : JackChou
  */
 import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'app-nav',
-  styleUrl: '',
+  styleUrl: './index.scss',
   shadow: true,
 })
 export class AppNav {

@@ -1,0 +1,20 @@
+.app-nav {
+  background-color: antiquewhite;
+  ul {
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    li {
+      list-style: none;
+      a {
+        text-decoration: none;
+        color: black;
+        font-size: 1.5rem;
+        font-weight: bold;
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+}

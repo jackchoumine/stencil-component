@@ -1,6 +1,7 @@
 import { Config } from '@stencil/core';
 
 // https://stenciljs.com/docs/config
+import { sass } from '@stencil/sass';
 
 export const config: Config = {
   globalStyle: 'src/global/app.css',
@@ -14,4 +15,5 @@ export const config: Config = {
       baseUrl: 'https://myapp.local/',
     },
   ],
+  plugins: [sass()],
 };
