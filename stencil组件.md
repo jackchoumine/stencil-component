@@ -337,6 +337,8 @@ export class AppHome {
 
 <!-- TODO -->
 
+[slot 的高级用法](https://ionicframework.com/blog/building-with-stencil-tabs/)
+
 ### 如何暴露组件内部的方法供外部使用？
 
 通过`@Method`暴露方法，`ref`获取组件实例，调用组件方法。
