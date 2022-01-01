@@ -1,11 +1,11 @@
 /*
- * @Description : 
+ * @Description :
  * @Date        : 2021-12-30 21:58:15 +0800
  * @Author      : JackChou
- * @LastEditTime: 2021-12-30 22:01:35 +0800
+ * @LastEditTime: 2022-01-01 20:28:30 +0800
  * @LastEditors : JackChou
  */
-import { Component, h } from '@stencil/core';
+import { Component, h } from '@stencil/core'
 
 @Component({
   tag: 'app-custom-cube',
@@ -15,9 +15,9 @@ import { Component, h } from '@stencil/core';
 export class AppNav {
   render() {
     return (
-      <nav class="app-nav">
-       <p>custom cube</p>
+      <nav class='app-nav'>
+        <p>custom cube</p>
       </nav>
-    );
+    )
   }
 }

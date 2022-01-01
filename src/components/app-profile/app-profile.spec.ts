@@ -1,5 +1,5 @@
-import { AppProfile } from './app-profile';
-import { newSpecPage } from '@stencil/core/testing';
+import { AppProfile } from './app-profile'
+import { newSpecPage } from '@stencil/core/testing'
 
 describe('app-profile', () => {
   describe('normalization', () => {
@@ -7,40 +7,40 @@ describe('app-profile', () => {
       const { rootInstance } = await newSpecPage({
         components: [AppProfile],
         html: '<app-profile></app-profile>',
-      });
-      expect(rootInstance.normalize(undefined)).toEqual('');
-    });
+      })
+      expect(rootInstance.normalize(undefined)).toEqual('')
+    })
 
     it('returns a blank string if the name is null', async () => {
       const { rootInstance } = await newSpecPage({
         components: [AppProfile],
         html: '<app-profile></app-profile>',
-      });
-      expect(rootInstance.normalize(null)).toEqual('');
-    });
+      })
+      expect(rootInstance.normalize(null)).toEqual('')
+    })
 
     it('capitalizes the first letter', async () => {
       const { rootInstance } = await newSpecPage({
         components: [AppProfile],
         html: '<app-profile></app-profile>',
-      });
-      expect(rootInstance.normalize('quincy')).toEqual('Quincy');
-    });
+      })
+      expect(rootInstance.normalize('quincy')).toEqual('Quincy')
+    })
 
     it('lower-cases the following letters', async () => {
       const { rootInstance } = await newSpecPage({
         components: [AppProfile],
         html: '<app-profile></app-profile>',
-      });
-      expect(rootInstance.normalize('JOSEPH')).toEqual('Joseph');
-    });
+      })
+      expect(rootInstance.normalize('JOSEPH')).toEqual('Joseph')
+    })
 
     it('handles single letter names', async () => {
       const { rootInstance } = await newSpecPage({
         components: [AppProfile],
         html: '<app-profile></app-profile>',
-      });
-      expect(rootInstance.normalize('q')).toEqual('Q');
-    });
-  });
-});
+      })
+      expect(rootInstance.normalize('q')).toEqual('Q')
+    })
+  })
+})
