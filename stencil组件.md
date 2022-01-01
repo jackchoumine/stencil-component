@@ -358,3 +358,41 @@ export class TodoList {
 ```
 
 - 作为`Fragment`
+
+## 样式
+
+stencil 使用 Shadow DOM 要封装 DOM 和样式，内部样式不泄露到外部，外部样式不影响组件内部的 DOM。
+
+```tsx
+@Component({
+  shadow: true,// 启用 shadow DOM
+})
+```
+
+不启用，和平时的 style 一样书写，就是全局样式。
+
+启用后：
+
+- 样式隔离：内外部样式不相互影响。
+
+- 设置样式的选择改变
+
+启用前，可通过自定义标签获取到 DOM
+
+```scss
+app-input {
+}
+```
+
+启用后，自定义标签失效，使用 `:host`
+
+```scss
+:host {
+}
+```
+
+启用后，对`:host`选择器有影响，目前还不清楚是什么影响。
+
+<!-- TODO -->
+
+> 都使用 `:host`

@@ -2,7 +2,7 @@
  * @Description :
  * @Date        : 2022-01-01 23:19:17 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-01-02 02:54:14 +0800
+ * @LastEditTime: 2022-01-02 03:20:57 +0800
  * @LastEditors : JackChou
  */
 import { Component, Prop, h, Element, EventEmitter, Event, Host, Method } from '@stencil/core'
@@ -48,9 +48,10 @@ export class MyInput {
   render() {
     return (
       <Host>
-        <div>
+        <div id='divContainer'>
           name:{this.person.name},age:{this.person.age}
         </div>
+        <h2>h2 app-input</h2>
         <slot name='prepend'></slot>
         <input value={this.value} onInput={e => this.onInput(e)} onChange={e => this.onChange(e)} />
         <slot name='append'>hello</slot>

@@ -68,6 +68,7 @@ export class AppHome {
           {/* </div> */}
         </app-input>
         <button>button</button>
+        <h2>h2 app-home</h2>
         <div class='app-home'>
           <stencil-route-link url='/dashboard/stencil'>
             <button>Profile page</button>

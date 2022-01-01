@@ -1,4 +1,5 @@
 :host {
+  background-color: lightgreen;
   input {
     display: inline-block;
     height: 2rem;
@@ -8,4 +9,10 @@
     border-bottom: 1px solid #ccc;
     font-size: 1.5rem;
   }
+  h2 {
+    font-size: 10px;
+  }
+}
+h2 {
+  color: crimson;
 }
