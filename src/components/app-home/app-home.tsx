@@ -28,10 +28,23 @@ export class AppHome {
     console.log(newValue, oldValue)
   }
   person: Person = { name: 'John', age: 23 }
+
+  appInput!: HTMLAppInputElement
+  componentWillLoad() {
+    console.log('Component is about to be rendered')
+  }
+  componentDidLoad() {
+    console.log(this.appInput)
+    this.appInput.getValue().then(console.log)
+    console.log(this.appInput.person) // 拿到自定义属性
+    console.log(this.appInput.title) // 拿到原生属性
+    // console.log(this.appInput?.onInput)// 拿不到没有暴露的方法
+  }
   render() {
     return (
       <Host>
         <app-input
+          ref={refInput => (this.appInput = refInput)}
           person={this.person}
           title='input'
           value={this.input}

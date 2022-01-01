@@ -89,35 +89,6 @@ export class MyInput {
 
 阻止事件冒泡，必要时取消默认行为。
 
-### 如何传递 slot
-
-```tsx
-<Host>
-  <slot name='prepend'></slot>
-  <input value={this.value} onInput={e => this.onInput(e)} onChange={e => this.onChange(e)} />
-  <slot name='append'>hello</slot>
-</Host>
-```
-
-从父组件传递：
-
-```tsx
-<app-input>
-  {/* 不指定slot名字，无法处理 */}
-  {/* <h1>header one</h1> */}
-  <h2 slot='prepend'> append slot</h2>
-  {/* <div slot='append'> */}
-  <span slot='append'>append</span>
-  <span slot='append'>append one</span>
-  <span slot='append'>append another</span>
-  {/* </div> */}
-</app-input>
-```
-
-> 如何通过 slot 传递数据到父组件？
-
-<!-- TODO -->
-
 ## 组件使用
 
 通过自定义标签 `app-input` 在 stencil 组件中使用：
@@ -163,3 +134,72 @@ export class AppHome {
   }
 }
 ```
+
+### 如何传递 slot
+
+```tsx
+<Host>
+  <slot name='prepend'></slot>
+  <input value={this.value} onInput={e => this.onInput(e)} onChange={e => this.onChange(e)} />
+  <slot name='append'>hello</slot>
+</Host>
+```
+
+从父组件传递：
+
+```tsx
+<app-input>
+  {/* 不指定slot名字，无法处理 */}
+  {/* <h1>header one</h1> */}
+  <h2 slot='prepend'> append slot</h2>
+  {/* <div slot='append'> */}
+  <span slot='append'>append</span>
+  <span slot='append'>append one</span>
+  <span slot='append'>append another</span>
+  {/* </div> */}
+</app-input>
+```
+
+> 如何通过 slot 传递数据到父组件？
+
+<!-- TODO -->
+
+### 如何暴露组件内部的方法供外部使用？
+
+通过`@Method`暴露方法，`ref`获取组件实例，调用组件方法。
+
+```tsx
+  @Method() // @Method 装饰器要求方法返回Promise
+  async getValue() {
+    return this.value
+  }
+```
+
+在父组件通过`ref`调用组件方法
+
+```tsx
+@Component({
+  tag: 'app-home',
+  styleUrl: 'app-home.css',
+  shadow: true,
+})
+export class AppHome {
+  person: Person = { name: 'John', age: 23 }
+  appInput!: HTMLAppInputElement
+  componentWillLoad() {
+    console.log('Component is about to be rendered', this.appInput)
+  }
+  componentDidLoad() {
+    console.log(this.appInput) // 组件实例
+    this.appInput.getValue().then(console.log)
+    console.log(this.appInput.person) // 拿到自定义属性
+    console.log(this.appInput.title) // 拿到原生属性
+    // console.log(this.appInput?.onInput)// 拿不到没有暴露的方法
+  }
+  render() {
+    return <app-input ref={refInput => (this.appInput = refInput)} person={this.person} title='input' />
+  }
+}
+```
+
+通过函数的方式绑定 ref 到组件上，组件挂载后，ref 是组件实例。

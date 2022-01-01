@@ -13,6 +13,7 @@ export namespace Components {
     interface AppHome {
     }
     interface AppInput {
+        "getValue": () => Promise<string | number>;
         "person": Person;
         "value": string | number;
     }

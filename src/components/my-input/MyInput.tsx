@@ -2,10 +2,10 @@
  * @Description :
  * @Date        : 2022-01-01 23:19:17 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-01-02 01:13:25 +0800
+ * @LastEditTime: 2022-01-02 01:32:42 +0800
  * @LastEditors : JackChou
  */
-import { Component, Prop, h, EventEmitter, Event, Host } from '@stencil/core'
+import { Component, Prop, h, EventEmitter, Event, Host, Method } from '@stencil/core'
 
 export type Person = {
   name: string
@@ -36,6 +36,10 @@ export class MyInput {
     this.inputChanged.emit(inputEle.value)
   }
 
+  @Method()
+  async getValue() {
+    return this.value
+  }
   render() {
     return (
       <Host>
