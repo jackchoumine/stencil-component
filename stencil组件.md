@@ -89,6 +89,17 @@ export class MyInput {
 
 阻止事件冒泡，必要时取消默认行为。
 
+> 如何监听？
+
+- `@Listen(eventName)`监听事件，绑定到组件上，可通过第二个参数配置绑定的元素。
+  `@Listen`监听全局事件很有用。
+
+- 在 jsx 中，通过`onXxx`监听
+
+- html 中通过`addEventListener`
+
+[更多事件信息](https://stenciljs.com/docs/events#listen-decorator)
+
 ## 组件使用
 
 通过自定义标签 `app-input` 在 stencil 组件中使用：

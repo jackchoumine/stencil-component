@@ -1,4 +1,4 @@
-import { Component, h, Host, State, Watch } from '@stencil/core'
+import { Component, h, Host, State, Watch, Listen } from '@stencil/core'
 import { Person } from '../my-input/MyInput'
 
 @Component({
@@ -19,10 +19,6 @@ export class AppHome {
     console.log('原生事件', inputEle.value)
   }
 
-  onChange(e: CustomEvent<HTMLAppInputElement>) {
-    console.log(e.detail)
-  }
-
   @Watch('input')
   inputChanged(newValue: string, oldValue: string) {
     console.log(newValue, oldValue)
@@ -40,6 +36,18 @@ export class AppHome {
     // console.log(this.appInput.title) // 拿到原生属性
     // console.log(this.appInput?.onInput)// 拿不到没有暴露的方法
   }
+  @Listen('change')
+  onChange(e: CustomEvent<HTMLAppInputElement>) {
+    console.log('监听组件自定义事件 onChange')
+    console.log(e.detail)
+  }
+  @Listen('click')
+  onClick(e: CustomEvent<HTMLAppInputElement>) {
+    console.log('监听组件自定义事件')
+    // console.log(e.target)
+    // console.log(e.currentTarget)
+    console.log(e.detail)
+  }
   render() {
     return (
       <Host>
@@ -49,8 +57,6 @@ export class AppHome {
           title='input'
           value={this.input}
           onInput={e => this.onInput(e)}
-          onInputChanged={this.onChange}
-          onChange={this.onNativeChange}
         >
           {/* 不指定名字，无法处理 */}
           {/* <h1>header one</h1> */}
@@ -61,6 +67,7 @@ export class AppHome {
           <span slot='append'>append another</span>
           {/* </div> */}
         </app-input>
+        <button>button</button>
         <div class='app-home'>
           <stencil-route-link url='/dashboard/stencil'>
             <button>Profile page</button>
