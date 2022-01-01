@@ -34,10 +34,10 @@ export class AppHome {
     console.log('Component is about to be rendered')
   }
   componentDidLoad() {
-    console.log(this.appInput)
+    // console.log(this.appInput)
     this.appInput.getValue().then(console.log)
-    console.log(this.appInput.person) // 拿到自定义属性
-    console.log(this.appInput.title) // 拿到原生属性
+    // console.log(this.appInput.person) // 拿到自定义属性
+    // console.log(this.appInput.title) // 拿到原生属性
     // console.log(this.appInput?.onInput)// 拿不到没有暴露的方法
   }
   render() {
