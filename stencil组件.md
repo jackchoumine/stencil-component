@@ -439,3 +439,12 @@ export const Hello = props => <h1>Hello, {props.name}!</h1>
 ```
 
 > 函数组件无法使用样式，且只能在 JSX 中使用，以大写字母开头，**不能在 html 中**使用，这个很坑爹。
+
+函数组件还有以下限制：
+
+- 不会被编译成 web component，故无法在 html 中使用
+- 不能使用生命周期函数
+- 不会创建 DOM 节点
+- 无法使用 shadow DOM 和 scoped style，其实无法应用样式
+
+这些特点，限制了函数组件的使用场景，除了 renderProp ，几乎无用。
