@@ -79,8 +79,8 @@ declare namespace LocalJSX {
     interface AppHome {
     }
     interface AppInput {
-        "onInput"?: (event: CustomEvent<any>) => void;
         "onInputChanged"?: (event: CustomEvent<any>) => void;
+        "onMyInput"?: (event: CustomEvent<any>) => void;
         "person"?: Person;
         "value"?: string | number;
     }

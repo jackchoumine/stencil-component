@@ -63,7 +63,7 @@ export class AppHome {
           person={this.person}
           title='input'
           value={this.input}
-          onInput={e => this.onInput(e)}
+          onMyInput={e => this.onInput(e)}
         >
           {/* 不指定名字，无法处理 */}
           {/* <h1>header one</h1> */}
@@ -74,7 +74,7 @@ export class AppHome {
           <span slot='append'>append another</span>
           {/* </div> */}
         </app-input>
-    
+
         <h2>h2 app-home</h2>
         <Hello name='stencil' />
         <div class='app-home'>
