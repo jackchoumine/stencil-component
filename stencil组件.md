@@ -322,3 +322,33 @@ export class AppHome {
 ```
 
 通过函数的方式绑定 ref 到组件上，组件挂载后，ref 是组件实例。
+
+## Host 组件
+
+Host 组件一个内置组件，不会渲染到页面上。
+
+常用的场景：
+
+- 在组件内部设置自定义标签的属性
+
+```tsx
+import { Component, Host, h } from '@stencil/core'
+
+@Component({ tag: 'todo-list' })
+export class TodoList {
+  @Prop() open = false
+  render() {
+    return (
+      <Host
+        aria-hidden={this.open ? 'false' : 'true'}
+        class={{
+          'todo-list': true,
+          'is-open': this.open,
+        }}
+      />
+    )
+  }
+}
+```
+
+- 作为`Fragment`
