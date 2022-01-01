@@ -486,6 +486,8 @@ CSS 变量往往设置成全局的，但是全局样式文件只能导入一个�
 
 4. CSS resets
 
+[更多教程](https://ionicframework.com/blog/advanced-stencil-component-styling/)
+
 ## 函数组件
 
 ```tsx
