@@ -171,6 +171,10 @@ tag 属性必需，[更多参数](https://stenciljs.com/docs/component)
 
 - `@Prop`声明组件的属性
 
+> 关于命名
+
+在组件内部使用**小驼峰**命名，在 html 使用 dash-case 传递数据。
+
 > 如何处理原生属性？
 
 添加到**自定义标签**上。
@@ -179,9 +183,50 @@ tag 属性必需，[更多参数](https://stenciljs.com/docs/component)
 
 在 stencil 组件中，和 jsx 一样。
 
-在 html 中，
+在 html 中，所有属性都是字符串。
 
 <!-- TODO -->
+
+> prop 的选项
+
+```ts
+export interface PropOptions {
+  attribute?: string = false
+  mutable?: boolean = false
+  reflect?: boolean = false
+}
+```
+
+prop 默认是组件内部不可变更的，否则触发警告通过`mutable`修改这个默认行为。
+
+reflect：声明 DOM`prop`是否对应到标签特性上。
+
+```tsx
+@Component({ tag: 'my-cmp' })
+class Cmp {
+  @Prop({ reflect: true }) message = 'Hello'
+  @Prop({ reflect: false }) value = 'The meaning of life...'
+  @Prop({ reflect: true }) number = 42
+}
+```
+
+渲染结果：
+
+```html
+<my-cmp message="Hello" number="42"></my-cmp>
+```
+
+不设置为 true，依然可以通过 DOM 对象拿到 prop。
+
+> 修改特性名字 attribute
+
+如何验证 prop?
+
+从 Watch 中报错验证 prop 合法性。
+
+> 如何设置必需？
+
+都默认可选，可在 Watch 验证是否必须。
 
 - `@Event`声明组件触发的事件，后面是事件名称
 

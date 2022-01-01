@@ -49,6 +49,12 @@ export class AppHome {
     // console.log(e.currentTarget)
     console.log(e.detail)
   }
+
+  @Watch('input')
+  personChanged(newValue: string, oldValue: string) {
+    console.log('input watch')
+    console.log(newValue, oldValue)
+  }
   render() {
     return (
       <Host>
@@ -68,7 +74,7 @@ export class AppHome {
           <span slot='append'>append another</span>
           {/* </div> */}
         </app-input>
-        <button>button</button>
+    
         <h2>h2 app-home</h2>
         <Hello name='stencil' />
         <div class='app-home'>

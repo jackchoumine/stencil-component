@@ -2,7 +2,7 @@
  * @Description :
  * @Date        : 2022-01-01 23:19:17 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-01-02 03:25:26 +0800
+ * @LastEditTime: 2022-01-02 04:41:55 +0800
  * @LastEditors : JackChou
  */
 import { Component, Prop, h, Element, EventEmitter, Event, Host, Method } from '@stencil/core'
@@ -18,8 +18,8 @@ export type Person = {
 })
 export class MyInput {
   @Element() el: HTMLElement
-  @Prop() person: Person = null
-  @Prop() value: string | number = ''
+  @Prop({ attribute: 'person' }) person: Person = null
+  @Prop({ mutable: true, reflect: true }) value: string | number = ''
   @Event({ eventName: 'input' }) input: EventEmitter
   // 直接使用属性名称作为事件名称
   @Event() inputChanged: EventEmitter
@@ -41,10 +41,16 @@ export class MyInput {
   async getValue() {
     return this.value
   }
+  componentWillLoad() {
+    this.value = 'change'
+  }
   componentDidLoad() {
     console.log('this.el')
     // console.log(this.el)
     // console.log(this.el.shadowRoot.querySelector('div'))
+  }
+  changeValue(e: Event) {
+    this.value = 'change eeeee'
   }
   render() {
     return (
@@ -56,6 +62,7 @@ export class MyInput {
         <slot name='prepend'></slot>
         <input value={this.value} onInput={e => this.onInput(e)} onChange={e => this.onChange(e)} />
         <slot name='append'>hello</slot>
+        <button onClick={e => this.changeValue(e)}>change value</button>
       </Host>
     )
   }
