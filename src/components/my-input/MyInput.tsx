@@ -2,10 +2,10 @@
  * @Description :
  * @Date        : 2022-01-01 23:19:17 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-01-02 01:32:42 +0800
+ * @LastEditTime: 2022-01-02 02:54:14 +0800
  * @LastEditors : JackChou
  */
-import { Component, Prop, h, EventEmitter, Event, Host, Method } from '@stencil/core'
+import { Component, Prop, h, Element, EventEmitter, Event, Host, Method } from '@stencil/core'
 
 export type Person = {
   name: string
@@ -17,6 +17,7 @@ export type Person = {
   shadow: true,
 })
 export class MyInput {
+  @Element() el: HTMLElement
   @Prop() person: Person = null
   @Prop() value: string | number = ''
   @Event({ eventName: 'input' }) input: EventEmitter
@@ -39,6 +40,10 @@ export class MyInput {
   @Method()
   async getValue() {
     return this.value
+  }
+  componentDidLoad() {
+    console.log('this.el')
+    console.log(this.el)
   }
   render() {
     return (
