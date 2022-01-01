@@ -11,6 +11,9 @@ export namespace Components {
     }
     interface AppHome {
     }
+    interface AppInput {
+        "value": string | number;
+    }
     interface AppNav {
     }
     interface AppProfile {
@@ -31,6 +34,12 @@ declare global {
     var HTMLAppHomeElement: {
         prototype: HTMLAppHomeElement;
         new (): HTMLAppHomeElement;
+    };
+    interface HTMLAppInputElement extends Components.AppInput, HTMLStencilElement {
+    }
+    var HTMLAppInputElement: {
+        prototype: HTMLAppInputElement;
+        new (): HTMLAppInputElement;
     };
     interface HTMLAppNavElement extends Components.AppNav, HTMLStencilElement {
     }
@@ -53,6 +62,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "app-custom-cube": HTMLAppCustomCubeElement;
         "app-home": HTMLAppHomeElement;
+        "app-input": HTMLAppInputElement;
         "app-nav": HTMLAppNavElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
@@ -62,6 +72,11 @@ declare namespace LocalJSX {
     interface AppCustomCube {
     }
     interface AppHome {
+    }
+    interface AppInput {
+        "onInput"?: (event: CustomEvent<any>) => void;
+        "onInputChanged"?: (event: CustomEvent<any>) => void;
+        "value"?: string | number;
     }
     interface AppNav {
     }
@@ -73,6 +88,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "app-custom-cube": AppCustomCube;
         "app-home": AppHome;
+        "app-input": AppInput;
         "app-nav": AppNav;
         "app-profile": AppProfile;
         "app-root": AppRoot;
@@ -84,6 +100,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-custom-cube": LocalJSX.AppCustomCube & JSXBase.HTMLAttributes<HTMLAppCustomCubeElement>;
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
+            "app-input": LocalJSX.AppInput & JSXBase.HTMLAttributes<HTMLAppInputElement>;
             "app-nav": LocalJSX.AppNav & JSXBase.HTMLAttributes<HTMLAppNavElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;

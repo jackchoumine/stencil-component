@@ -20,8 +20,8 @@ stencil 除了创建 Web Component，还能构建 WPA 的站点。
 
 一个简单的 stencil 组件：
 
-```ts
-import { Component, Prop } from '@stencil/core'
+```tsx
+import { Component, Prop, h } from '@stencil/core'
 
 @Component({
   tag: 'my-name',

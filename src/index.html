@@ -23,5 +23,12 @@
 
   <body>
     <app-root></app-root>
+    <!-- <my-input input="hello" /> -->
+    <script>
+      // NOTE 监听 app 加载完成
+      window.addEventListener('appload', event => {
+        console.log(event.detail.namespace)
+      })
+    </script>
   </body>
 </html>

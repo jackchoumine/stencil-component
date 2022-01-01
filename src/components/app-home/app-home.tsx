@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core'
+import { Component, h, Host, State, Watch } from '@stencil/core'
 
 @Component({
   tag: 'app-home',
@@ -6,13 +6,41 @@ import { Component, h } from '@stencil/core'
   shadow: true,
 })
 export class AppHome {
+  @State() input = 'hello world'
+
+  onInput(e: CustomEvent<HTMLAppInputElement>) {
+    this.input = e.detail as unknown as string
+  }
+  // NOTE 监听原生事件
+  // 被组件内阻止事件冒泡后，监听不到
+  onNativeChange(e: Event) {
+    const inputEle = e.target as HTMLInputElement
+    console.log('原生事件', inputEle.value)
+  }
+
+  onChange(e: CustomEvent<HTMLAppInputElement>) {
+    console.log(e.detail)
+  }
+
+  @Watch('input')
+  inputChanged(newValue: string, oldValue: string) {
+    console.log(newValue, oldValue)
+  }
   render() {
     return (
-      <div class='app-home'>
-        <stencil-route-link url='/dashboard/stencil'>
-          <button>Profile page</button>
-        </stencil-route-link>
-      </div>
+      <Host>
+        <app-input
+          value={this.input}
+          onInput={e => this.onInput(e)}
+          onInputChanged={this.onChange}
+          onChange={this.onNativeChange}
+        />
+        <div class='app-home'>
+          <stencil-route-link url='/dashboard/stencil'>
+            <button>Profile page</button>
+          </stencil-route-link>
+        </div>
+      </Host>
     )
   }
 }
