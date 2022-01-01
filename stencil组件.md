@@ -146,7 +146,6 @@ export class MyInput {
   @Event() inputChanged: EventEmitter
 
   onInput(e: Event) {
-    //TODO 如何覆盖原生的 input 事件？ 阻止事件冒泡
     // e.preventDefault() // 默认行为不行
     e.stopPropagation()
     const inputEle = e.target as HTMLInputElement
