@@ -510,3 +510,9 @@ export const Hello = props => <h1>Hello, {props.name}!</h1>
 这些特点，限制了函数组件的使用场景，除了 renderProp ，几乎无用。
 
 > renderProp 只能在 jsx 中使用。
+
+[How To Build Web Components Using Stencil JS](https://enappd.com/blog/build-web-components-using-stencil-js/51/)
+
+[Creating Web Components with Stencil](https://auth0.com/blog/creating-web-components-with-stencil/)
+
+[你的前端框架要被 Web 组件取代了](https://www.infoq.cn/article/LlxdiogqZvvci57_ZgJm)
