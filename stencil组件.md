@@ -323,6 +323,8 @@ export class AppHome {
 
 通过函数的方式绑定 ref 到组件上，组件挂载后，ref 是组件实例。
 
+> prop、method、原生属性是共有的，其他都是私有的。
+
 ### `@Element` 装饰器
 
 在组件内部获取自组件实例。
