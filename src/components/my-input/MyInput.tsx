@@ -2,7 +2,7 @@
  * @Description :
  * @Date        : 2022-01-01 23:19:17 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-01-02 03:20:57 +0800
+ * @LastEditTime: 2022-01-02 03:25:26 +0800
  * @LastEditors : JackChou
  */
 import { Component, Prop, h, Element, EventEmitter, Event, Host, Method } from '@stencil/core'
@@ -43,7 +43,8 @@ export class MyInput {
   }
   componentDidLoad() {
     console.log('this.el')
-    console.log(this.el)
+    // console.log(this.el)
+    // console.log(this.el.shadowRoot.querySelector('div'))
   }
   render() {
     return (

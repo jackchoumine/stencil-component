@@ -396,3 +396,34 @@ app-input {
 <!-- TODO -->
 
 > 都使用 `:host`
+
+- 获取 DOM 的方式改变
+
+```js
+this.el.querySelector('div') // 启用前
+this.el.shadowRoot.querySelector('div') // 启用后
+```
+
+> 如何从外部改变内部的样式？
+
+- [CSS custom 变量](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties）
+
+<!-- FIXME -->
+
+CSS 变量往往设置成全局的，但是全局样式文件只能导入一个。
+
+和
+
+- [::part and ::theme, an ::explainer](https://meowni.ca/posts/part-theme-explainer/)
+
+- 全局样式
+
+哪些情况该考虑使用全局样式：
+
+1. Theming: defining CSS variables used across the app
+
+2. 字体
+
+3. body background
+
+4. CSS resets
