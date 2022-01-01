@@ -17,6 +17,107 @@ stencil 提供一些装饰器、生命周期钩子和渲染函数去编写一个
 
 ### 生命周期
 
+![stencil组件生命周期](https://tva1.sinaimg.cn/large/008i3skNgy1gxyq0ishibj30u0147418.jpg)
+
+> 第一次挂载
+
+```bash
+connectedCallback
+⬇️
+componentWillLoad
+⬇️
+componentWillRender
+⬇️
+render
+⬇️
+componentDidRender
+⬇️
+componentDidLoad
+⬇️
+disconnectedCallback # 组件被移除
+```
+
+prop 或者 state 更新：
+
+```bash
+@Watch
+⬇️
+componentShouldUpdate
+⬇️
+componentWillUpdate
+⬇️
+componentWillRender
+⬇️
+render
+⬇️
+componentDidRender
+⬇️
+componentDidUpdate
+⬇️
+disconnectedCallback # 组件被移除
+```
+
+常用的：
+
+`connectedCallback`会调用多次：首次和移除后在添加到 DOM 都会调用，可设置定时器、监听原生事件等。
+
+```js
+const el = document.createElement('my-cmp')
+document.body.appendChild(el)
+// connectedCallback() called
+// componentWillLoad() called (first time)
+
+el.remove()
+// disconnectedCallback()
+
+document.body.appendChild(el)
+// connectedCallback() called again, but `componentWillLoad()` is not.
+```
+
+`disconnectedCallback` 组件从 DOM 中移除时调用，可在此做一些收尾工作。
+
+`componentWillLoad` 在 render 之前调用，`调用一次`。
+可再次发送 ajax 请求获取数据。
+
+`componentShouldUpdate(newValue,oldValue,property)`
+
+返回布尔值，决定组件是否重新渲染。
+
+可以更新状态的钩子有：
+
+```bash
+componentWillLoad
+@Watch
+componentWillUpdate
+componentWillRender
+```
+
+`componentDidLoad(), componentDidUpdate() and componentDidRender()`更新状态，会导致再次渲染。
+
+`componentDidUpdate()、componentDidRender()` 可能导致无限渲染。
+
+父子组件的生命周期：
+
+```html
+<cmp-a>
+  <cmp-b>
+    <cmp-c></cmp-c>
+  </cmp-b>
+</cmp-a>
+```
+
+```bash
+cmp-a - componentWillLoad()
+cmp-b - componentWillLoad()
+cmp-c - componentWillLoad()
+
+cmp-c - componentDidLoad()
+cmp-b - componentDidLoad()
+cmp-a - componentDidLoad()
+```
+
+[Component Lifecycle Methods](https://stenciljs.com/docs/component-lifecycle)
+
 ### 应用加载事件
 
 一个特殊的生命周期钩子，在**整个应用加载完成**后触发。
@@ -66,6 +167,8 @@ export class MyInput {
 解读：
 
 - `@Component`装饰器声明该类是一个组件，传递一些元数据，比如组件的标签，标签必须`全局唯一，且含有-`，样式，是否开启 shadow 等。
+
+tag 属性必需，[更多参数](https://stenciljs.com/docs/component)
 
 - `@Prop`声明组件的属性
 
