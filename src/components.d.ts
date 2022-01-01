@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Person } from "./components/my-input/MyInput";
+import { RenderChildren } from "./components/app-nav/app-nav";
 import { MatchResults } from "@stencil/router";
 export namespace Components {
     interface AppCustomCube {
@@ -18,6 +19,7 @@ export namespace Components {
         "value": string | number;
     }
     interface AppNav {
+        "renderChildren": RenderChildren;
     }
     interface AppProfile {
         "match": MatchResults;
@@ -83,6 +85,7 @@ declare namespace LocalJSX {
         "value"?: string | number;
     }
     interface AppNav {
+        "renderChildren"?: RenderChildren;
     }
     interface AppProfile {
         "match"?: MatchResults;

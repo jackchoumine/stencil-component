@@ -450,3 +450,5 @@ export const Hello = props => <h1>Hello, {props.name}!</h1>
 - 无法使用 shadow DOM 和 scoped style，其实无法应用样式
 
 这些特点，限制了函数组件的使用场景，除了 renderProp ，几乎无用。
+
+> renderProp 只能在 jsx 中使用。

@@ -6,11 +6,14 @@ import { Component, h } from '@stencil/core'
   shadow: true,
 })
 export class AppRoot {
+  renderChildren(name: string) {
+    return <span style={{ color: 'red' }}>{name}</span>
+  }
   render() {
     return (
       <div>
         <header>
-          <app-nav />
+          <app-nav renderChildren={this.renderChildren} />
         </header>
 
         <main>

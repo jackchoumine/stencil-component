@@ -2,17 +2,19 @@
  * @Description : 导航栏
  * @Date        : 2021-12-30 21:48:01 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-01-01 20:34:49 +0800
+ * @LastEditTime: 2022-01-02 04:17:15 +0800
  * @LastEditors : JackChou
  */
-import { Component, h, State } from '@stencil/core'
+import { Component, h, State, Prop, VNode } from '@stencil/core'
 type Path = { path: string; name: string }
+export type RenderChildren = (name: string) => VNode
 @Component({
   tag: 'app-nav',
   styleUrl: './index.scss',
   shadow: true,
 })
 export class AppNav {
+  @Prop() renderChildren: RenderChildren = undefined
   @State() currentPath: string = window.location.pathname
   // @Prop() path: string = this.currentPath
   setClass(path) {
@@ -28,6 +30,7 @@ export class AppNav {
   render() {
     return (
       <nav class='app-nav'>
+        {this.renderChildren('render-children')}
         <ul>
           {this.pathList.map(item => (
             <li>
