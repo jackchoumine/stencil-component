@@ -429,3 +429,13 @@ CSS 变量往往设置成全局的，但是全局样式文件只能导入一个�
 3. body background
 
 4. CSS resets
+
+## 函数组件
+
+```tsx
+import { h } from '@stencil/core'
+import './index.css'
+export const Hello = props => <h1>Hello, {props.name}!</h1>
+```
+
+> 函数组件无法使用样式，且只能在 JSX 中使用，以大写字母开头，**不能在 html 中**使用，这个很坑爹。

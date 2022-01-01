@@ -1,4 +1,5 @@
 import { Component, h, Host, State, Watch, Listen } from '@stencil/core'
+import { Hello } from '../fun-component/Hello'
 import { Person } from '../my-input/MyInput'
 
 @Component({
@@ -69,6 +70,7 @@ export class AppHome {
         </app-input>
         <button>button</button>
         <h2>h2 app-home</h2>
+        <Hello name='stencil' />
         <div class='app-home'>
           <stencil-route-link url='/dashboard/stencil'>
             <button>Profile page</button>
