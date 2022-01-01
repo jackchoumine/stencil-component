@@ -2,17 +2,22 @@
  * @Description :
  * @Date        : 2022-01-01 23:19:17 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-01-02 01:04:51 +0800
+ * @LastEditTime: 2022-01-02 01:13:25 +0800
  * @LastEditors : JackChou
  */
 import { Component, Prop, h, EventEmitter, Event, Host } from '@stencil/core'
 
+export type Person = {
+  name: string
+  age: number
+}
 @Component({
   tag: 'app-input',
   styleUrl: 'index.scss',
   shadow: true,
 })
 export class MyInput {
+  @Prop() person: Person = null
   @Prop() value: string | number = ''
   @Event({ eventName: 'input' }) input: EventEmitter
   // 直接使用属性名称作为事件名称
@@ -34,6 +39,9 @@ export class MyInput {
   render() {
     return (
       <Host>
+        <div>
+          name:{this.person.name},age:{this.person.age}
+        </div>
         <slot name='prepend'></slot>
         <input value={this.value} onInput={e => this.onInput(e)} onChange={e => this.onChange(e)} />
         <slot name='append'>hello</slot>

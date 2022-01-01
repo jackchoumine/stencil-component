@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Person } from "./components/my-input/MyInput";
 import { MatchResults } from "@stencil/router";
 export namespace Components {
     interface AppCustomCube {
@@ -12,6 +13,7 @@ export namespace Components {
     interface AppHome {
     }
     interface AppInput {
+        "person": Person;
         "value": string | number;
     }
     interface AppNav {
@@ -76,6 +78,7 @@ declare namespace LocalJSX {
     interface AppInput {
         "onInput"?: (event: CustomEvent<any>) => void;
         "onInputChanged"?: (event: CustomEvent<any>) => void;
+        "person"?: Person;
         "value"?: string | number;
     }
     interface AppNav {

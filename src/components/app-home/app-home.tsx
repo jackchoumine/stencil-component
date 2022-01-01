@@ -1,4 +1,5 @@
 import { Component, h, Host, State, Watch } from '@stencil/core'
+import { Person } from '../my-input/MyInput'
 
 @Component({
   tag: 'app-home',
@@ -26,10 +27,12 @@ export class AppHome {
   inputChanged(newValue: string, oldValue: string) {
     console.log(newValue, oldValue)
   }
+  person: Person = { name: 'John', age: 23 }
   render() {
     return (
       <Host>
         <app-input
+          person={this.person}
           title='input'
           value={this.input}
           onInput={e => this.onInput(e)}
