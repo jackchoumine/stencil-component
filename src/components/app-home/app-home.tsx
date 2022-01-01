@@ -30,11 +30,21 @@ export class AppHome {
     return (
       <Host>
         <app-input
+          title='input'
           value={this.input}
           onInput={e => this.onInput(e)}
           onInputChanged={this.onChange}
           onChange={this.onNativeChange}
-        />
+        >
+          {/* 不指定名字，无法处理 */}
+          {/* <h1>header one</h1> */}
+          <h2 slot='prepend'> append slot</h2>
+          {/* <div slot='append'> */}
+          <span slot='append'>append</span>
+          <span slot='append'>append one</span>
+          <span slot='append'>append another</span>
+          {/* </div> */}
+        </app-input>
         <div class='app-home'>
           <stencil-route-link url='/dashboard/stencil'>
             <button>Profile page</button>

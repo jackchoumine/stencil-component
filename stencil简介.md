@@ -2,7 +2,7 @@
 
 stencil 是一个生成 **Web Component** 的**编译器**，但是其具有自己的特殊语法，使用 stencil 生成的组件可**跨框架**和**在 html 中使用**。
 
-其号称结合了最流行框架(angular、react)中的最好的理念，具备这些特点：
+其号称结合了最流行框架(angular、react、vue)中的最好的理念，具备这些特点：
 
 - TypeScript (依赖注入、装饰器等 angular 的一些语法)
 - Virtual DOM (React)

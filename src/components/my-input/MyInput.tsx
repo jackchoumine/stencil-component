@@ -2,14 +2,15 @@
  * @Description :
  * @Date        : 2022-01-01 23:19:17 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-01-02 00:20:37 +0800
+ * @LastEditTime: 2022-01-02 01:04:51 +0800
  * @LastEditors : JackChou
  */
-import { Component, Prop, h, EventEmitter, Event } from '@stencil/core'
+import { Component, Prop, h, EventEmitter, Event, Host } from '@stencil/core'
 
 @Component({
   tag: 'app-input',
   styleUrl: 'index.scss',
+  shadow: true,
 })
 export class MyInput {
   @Prop() value: string | number = ''
@@ -31,6 +32,12 @@ export class MyInput {
   }
 
   render() {
-    return <input value={this.value} onInput={e => this.onInput(e)} onChange={e => this.onChange(e)} />
+    return (
+      <Host>
+        <slot name='prepend'></slot>
+        <input value={this.value} onInput={e => this.onInput(e)} onChange={e => this.onChange(e)} />
+        <slot name='append'>hello</slot>
+      </Host>
+    )
   }
 }
