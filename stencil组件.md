@@ -183,7 +183,16 @@ tag 属性必需，[更多参数](https://stenciljs.com/docs/component)
 
 在 stencil 组件中，和 jsx 一样。
 
-在 html 中，所有属性都是字符串。
+在 html 中，所有属性都是字符串，**只能传递字符串**。
+
+```js
+comInstance.setAttribute('prop', value) // 无效
+comInstance.prop = value // work well 且对对象和数组无效
+```
+
+> 如何在 html 中修改 prop？
+
+暴露方法和设置 prop 可变，调用方法修改。
 
 <!-- TODO -->
 
