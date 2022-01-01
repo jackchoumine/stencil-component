@@ -100,6 +100,12 @@ export class MyInput {
 
 [更多事件信息](https://stenciljs.com/docs/events#listen-decorator)
 
+### 组件如何响应数据变化
+
+当 props 和 state 改变，stencil 重新渲染，比较变化时，比较的时引用，所以数组和对象，引用不变，不会更新。
+
+[Reactive Data](https://stenciljs.com/docs/reactive-data)
+
 ## 组件使用
 
 通过自定义标签 `app-input` 在 stencil 组件中使用：
