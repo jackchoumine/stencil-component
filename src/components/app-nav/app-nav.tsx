@@ -2,7 +2,7 @@
  * @Description : 导航栏
  * @Date        : 2021-12-30 21:48:01 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-01-01 20:28:19 +0800
+ * @LastEditTime: 2022-01-01 20:34:49 +0800
  * @LastEditors : JackChou
  */
 import { Component, h, State } from '@stencil/core'
@@ -30,9 +30,11 @@ export class AppNav {
       <nav class='app-nav'>
         <ul>
           {this.pathList.map(item => (
-            <stencil-route-link url={item.path}>
-              <li class={this.setClass(item.path)}>{item.name}</li>
-            </stencil-route-link>
+            <li>
+              <stencil-route-link url={item.path} activeClass={this.setClass(item.path)}>
+                {item.name}
+              </stencil-route-link>
+            </li>
           ))}
         </ul>
       </nav>
