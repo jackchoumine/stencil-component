@@ -2,7 +2,7 @@
  * @Description :
  * @Date        : 2022-01-02 22:08:02 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-01-02 22:22:09 +0800
+ * @LastEditTime: 2022-01-02 22:26:15 +0800
  * @LastEditors : JackChou
  */
 
@@ -49,3 +49,6 @@ export class AppModal {
     this.onOk.emit()
   }
 }
+
+// https://www.carlrippon.com/creating-modal-dialog-web-component-stenciljs/
+// 弹窗组件
