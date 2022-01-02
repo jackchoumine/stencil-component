@@ -4,16 +4,17 @@ import { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
 
 export const config: Config = {
-  namespace: 'jack',
+  namespace: 'app',
   globalStyle: 'src/global/app.css',
   globalScript: 'src/global/app.ts',
   taskQueue: 'async',
   hashFileNames: false,
   buildEs5: false,
   outputTargets: [
-    {
-      type: 'dist',
-    },
+    // 和 namespace 冲突
+    // {
+    //   type: 'dist',
+    // },
     {
       type: 'www',
       // comment the following line to disable service workers in production
