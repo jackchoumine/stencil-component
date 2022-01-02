@@ -23,11 +23,24 @@
 
   <body>
     <app-root></app-root>
+    <app-modal title="Hello modal" visible="false">
+      <p>hello</p>
+    </app-modal>
+    <button id="button">展示弹窗</button>
     <!-- <my-input value="hello" /> -->
     <script>
       // NOTE 监听 app 加载完成
       window.addEventListener('appload', event => {
         console.log(event.detail.namespace)
+      })
+      const button = document.getElementById('button')
+      button.addEventListener('click', () => {
+        const modal = document.querySelector('app-modal')
+        modal.visible = true
+      })
+      const appModal = document.querySelector('app-modal')
+      appModal.addEventListener('ok', event => {
+        console.log(event)
       })
     </script>
   </body>
