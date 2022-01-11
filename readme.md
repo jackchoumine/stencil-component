@@ -39,3 +39,34 @@ To run the unit tests and watch for file changes during development, run:
 ```
 npm run test.watch
 ```
+## vue2 如何引入 stencil web component
+
+两种方式：
+
+1. 通过 unpkg cnd 引入
+
+index.html
+
+```html
+<script type="module" async src="https://unpkg.com/stencil-rating-component-test"></script>
+```
+
+2. 安装 npm
+
+```bash
+npm i stencil-rating-component-test
+```
+
+在 main.js
+
+```js
+import { defineCustomElements } from 'stencil-rating-component-test/loader'
+defineCustomElements()
+```
+
+从 jsdelivr 引入不行：
+
+```html
+<!-- NOTE 不行 package 需要设置 jsdelivr browser main 没设置好 -->
+<script type="module" src="https://cdn.jsdelivr.net/npm/stencil-rating-component-test@1.0.1/dist/esm/index.js"></script>
+```
