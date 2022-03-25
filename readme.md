@@ -104,3 +104,22 @@ module.exports = {
 // kebab-case 写法的标签是自定义元素
 // PascalCase 风格的是 vue 组件
 ```
+
+### 使用
+
+```html
+          <!-- NOTE 复杂数据：（对象和数组）、希望动态绑定的数据，添加 prop -->
+          <donut-chart
+            :simbol="simbol"
+            :total="total"
+            :label-color="labelColor"
+            :label-size="labelSize"
+            :label-weight="labelWeight"
+            :themes="chartSettings.themes"
+            :innerRadius="innerRadius"
+            :chartType.prop="chartSettings.chartType"
+            :data.prop="data"
+            :size.prop="previewSize"
+          />
+```
+监听事件和vue组件一样。
