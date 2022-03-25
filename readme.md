@@ -41,14 +41,23 @@ npm run test.watch
 ```
 ## vue2 如何引入 stencil web component
 
+### 引入组件
+
 两种方式：
 
-1. 通过 unpkg cnd 引入
+1. 通过 cnd 引入 web component
 
-index.html
+index.html 中
 
 ```html
 <script type="module" async src="https://unpkg.com/stencil-rating-component-test"></script>
+```
+
+从 jsdelivr 引入不行：
+
+```html
+<!-- NOTE 不行 package 需要设置 jsdelivr browser main 没设置好 -->
+<script type="module" src="https://cdn.jsdelivr.net/npm/stencil-rating-component-test@1.0.1/dist/esm/index.js"></script>
 ```
 
 2. 安装 npm
@@ -64,9 +73,34 @@ import { defineCustomElements } from 'stencil-rating-component-test/loader'
 defineCustomElements()
 ```
 
-从 jsdelivr 引入不行：
+### 让 vue 识别 web component 和 vue component, vue会跳过web component 编译
+main.js
+```js
+Vue.config.ignoredElements = [/^([a-z][a-z0-9]*)(-[a-z0-9]+)*$/] 
+```
+vue.config.js
 
-```html
-<!-- NOTE 不行 package 需要设置 jsdelivr browser main 没设置好 -->
-<script type="module" src="https://cdn.jsdelivr.net/npm/stencil-rating-component-test@1.0.1/dist/esm/index.js"></script>
+```js
+module.exports = {
+  chainWebpack: config => {
+    // config.resolve.symlinks(false),
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap(options => ({
+        ...(options || {}),
+        compilerOptions: {
+          isCustomElement: tag => tag.includes('-'),
+        },
+      }))
+  },
+ }
+```
+
+为了格式化方便，eslint 的规则配置
+
+```js
+'vue/component-name-in-template-casing': 0,// 不检查组件写法
+// kebab-case 写法的标签是自定义元素
+// PascalCase 风格的是 vue 组件
 ```
