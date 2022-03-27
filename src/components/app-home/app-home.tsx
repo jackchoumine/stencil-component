@@ -45,9 +45,9 @@ export class AppHome {
         <Hello name='stencil' />
         <app-modal visible={this.visible} onOk={this.onOkHandler} onCancel={this.onOkHandler}>
           <p>弹窗组件</p>
-          {/* <my-rating max-value={5} value={2}></my-rating> */}
         </app-modal>
         <button onClick={this.onShowModal}>在自定义组件中使用弹窗组件</button>
+        <my-rating max-value={10} value={2}></my-rating>
         <web-social-share show={true}></web-social-share>
         <div class='app-home'>
           <stencil-route-link url='/dashboard/stencil'>

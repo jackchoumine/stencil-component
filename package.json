@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@logisticinfotech/rating-component": "^1.0.6",
+    "stencil-rating-component-test": "^1.0.1",
     "web-components-jack": "^1.3.0",
     "web-social-share": "^8.0.1"
   },
