@@ -2,7 +2,7 @@
  * @Description :
  * @Date        : 2022-01-02 22:08:02 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-01-02 22:26:15 +0800
+ * @LastEditTime: 2022-03-27 16:48:51 +0800
  * @LastEditors : JackChou
  */
 
@@ -13,18 +13,19 @@ import { Component, Prop, h, Event, EventEmitter } from '@stencil/core'
   shadow: true,
 })
 export class AppModal {
-  @Prop() title: string = ''
+  @Prop() modalTitle: string = ''
   @Prop({ mutable: true, reflect: true }) visible: boolean = false
-  @Event() onCancel: EventEmitter
-  @Event() onOk: EventEmitter
+  @Event() cancel: EventEmitter
+  @Event() ok: EventEmitter
   componentDidLoad() {
+    console.log('this.componentDidLoad')
     console.log(this.visible)
   }
   render() {
     return (
-      <div class={this.visible ? 'wrapper visible' : 'wrapper'}>
+      <div class={this.visible ? 'overlay visible' : 'overlay'}>
         <div class='modal'>
-          <span class='title'>{this.title}</span>
+          <span class='title'>{this.modalTitle}</span>
           <div class='content'>
             <slot />
           </div>
@@ -42,11 +43,11 @@ export class AppModal {
   }
   onCancelHandler = () => {
     this.visible = false
-    this.onCancel.emit()
+    this.cancel.emit()
   }
   onOkHandler = () => {
     this.visible = false
-    this.onOk.emit()
+    this.ok.emit()
   }
 }
 
