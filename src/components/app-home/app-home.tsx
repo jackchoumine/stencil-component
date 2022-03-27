@@ -9,24 +9,8 @@ import { Person } from '../my-input/MyInput'
 })
 export class AppHome {
   @State() input = 'hello world'
+  @State() visible = false
 
-  onInput(e: CustomEvent<HTMLAppInputElement>) {
-    this.input = e.detail as unknown as string
-  }
-  // NOTE 监听原生事件
-  // 被组件内阻止事件冒泡后，监听不到
-  onNativeChange(e: Event) {
-    const inputEle = e.target as HTMLInputElement
-    console.log('原生事件', inputEle.value)
-  }
-
-  @Watch('input')
-  inputChanged(newValue: string, oldValue: string) {
-    console.log(newValue, oldValue)
-  }
-  person: Person = { name: 'John', age: 23 }
-
-  appInput!: HTMLAppInputElement
   componentWillLoad() {
     console.log('Component is about to be rendered')
   }
@@ -37,24 +21,7 @@ export class AppHome {
     // console.log(this.appInput.title) // 拿到原生属性
     // console.log(this.appInput?.onInput)// 拿不到没有暴露的方法
   }
-  @Listen('change')
-  onChange(e: CustomEvent<HTMLAppInputElement>) {
-    console.log('监听组件自定义事件 onChange')
-    console.log(e.detail)
-  }
-  @Listen('click')
-  onClick(e: CustomEvent<HTMLAppInputElement>) {
-    console.log('监听组件自定义事件')
-    // console.log(e.target)
-    // console.log(e.currentTarget)
-    console.log(e.detail)
-  }
 
-  @Watch('input')
-  personChanged(newValue: string, oldValue: string) {
-    console.log('input watch')
-    console.log(newValue, oldValue)
-  }
   render() {
     return (
       <Host>
@@ -74,9 +41,12 @@ export class AppHome {
           <span slot='append'>append another</span>
           {/* </div> */}
         </app-input>
-
         <h2>h2 app-home</h2>
         <Hello name='stencil' />
+        <app-modal visible={this.visible} onOk={this.onOkHandler} onCancel={this.onOkHandler}>
+          <p>弹窗组件</p>
+        </app-modal>
+        <button onClick={this.onShowModal}>在自定义组件中使用弹窗组件</button>
         <div class='app-home'>
           <stencil-route-link url='/dashboard/stencil'>
             <button>Profile page</button>
@@ -84,5 +54,48 @@ export class AppHome {
         </div>
       </Host>
     )
+  }
+
+  onShowModal = () => {
+    this.visible = true
+  }
+  onOkHandler = () => {
+    this.visible = false
+  }
+  onInput(e: CustomEvent<HTMLAppInputElement>) {
+    this.input = e.detail as unknown as string
+  }
+  // NOTE 监听原生事件
+  // 被组件内阻止事件冒泡后，监听不到
+  onNativeChange(e: Event) {
+    const inputEle = e.target as HTMLInputElement
+    console.log('原生事件', inputEle.value)
+  }
+
+  @Watch('input')
+  inputChanged(newValue: string, oldValue: string) {
+    console.log(newValue, oldValue)
+  }
+  person: Person = { name: 'John', age: 23 }
+
+  appInput!: HTMLAppInputElement
+
+  @Listen('change')
+  onChange(e: CustomEvent<HTMLAppInputElement>) {
+    console.log('监听组件自定义事件 onChange')
+    console.log(e.detail)
+  }
+  @Listen('click')
+  onClick(e: CustomEvent<HTMLAppInputElement>) {
+    console.log('监听组件自定义事件')
+    // console.log(e.target)
+    // console.log(e.currentTarget)
+    console.log(e.detail)
+  }
+
+  @Watch('input')
+  personChanged(newValue: string, oldValue: string) {
+    console.log('input watch')
+    console.log(newValue, oldValue)
   }
 }
