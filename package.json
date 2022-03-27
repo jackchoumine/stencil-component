@@ -10,6 +10,11 @@
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
+  "dependencies": {
+    "@logisticinfotech/rating-component": "^1.0.6",
+    "web-components-jack": "^1.3.0",
+    "web-social-share": "^8.0.1"
+  },
   "devDependencies": {
     "@stencil/core": "^2.7.0",
     "@stencil/router": "^1.0.1",

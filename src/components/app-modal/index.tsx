@@ -2,7 +2,7 @@
  * @Description :
  * @Date        : 2022-01-02 22:08:02 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-03-27 16:48:51 +0800
+ * @LastEditTime: 2022-03-27 18:34:05 +0800
  * @LastEditors : JackChou
  */
 
@@ -22,6 +22,8 @@ export class AppModal {
     console.log(this.visible)
   }
   render() {
+    // TODO 为何不能使用这个方法？
+    // style={{ display: this.visible ? 'block' : 'none' }}
     return (
       <div class={this.visible ? 'overlay visible' : 'overlay'}>
         <div class='modal'>
