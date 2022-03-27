@@ -19,7 +19,7 @@ export namespace Components {
         "value": string | number;
     }
     interface AppModal {
-        "title": string;
+        "modalTitle": string;
         "visible": boolean;
     }
     interface AppNav {
@@ -96,9 +96,9 @@ declare namespace LocalJSX {
         "value"?: string | number;
     }
     interface AppModal {
-        "onOnCancel"?: (event: CustomEvent<any>) => void;
-        "onOnOk"?: (event: CustomEvent<any>) => void;
-        "title"?: string;
+        "modalTitle"?: string;
+        "onCancel"?: (event: CustomEvent<any>) => void;
+        "onOk"?: (event: CustomEvent<any>) => void;
         "visible"?: boolean;
     }
     interface AppNav {
